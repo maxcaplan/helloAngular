@@ -1,0 +1,76 @@
+<div *ngIf="messageService.messages.length">
+  <div
+    class="message-btn shadow-lg d-none d-sm-block"
+    [ngClass]="expand ? 'openExpand' : 'closeExpand'"
+  >
+    <div class="wrapper">
+      <div class="content">
+        <h4>
+          Messages:
+          <button class="btn btn-danger float-right" (click)="clear()">
+            clear
+          </button>
+        </h4>
+
+        <hr />
+
+        <ol class="list-group list-group-flush rounded">
+          <li
+            class="list-group-item text-break"
+            *ngFor="let message of messageService.messages"
+          >
+            {{ message }}
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="icon" (click)="toggleExpand()">
+      <fa-icon [icon]="faBell" id="message-ico"></fa-icon>
+    </div>
+
+    <div class="messages">
+      <h5 class="m-0">
+        <span class="badge rounded-pill shadow bg-danger">
+          {{ messageService.messages.length }}
+        </span>
+      </h5>
+    </div>
+  </div>
+
+  <div
+    class="message-btn message-btn-sm shadow-lg d-block d-sm-none"
+    [ngClass]="expand ? 'openExpand' : 'closeExpand'"
+  >
+    <div class="wrapper">
+      <div class="content">
+        <h4>
+          Messages:
+          <button class="btn btn-danger float-right" (click)="clear()">
+            clear
+          </button>
+        </h4>
+
+        <hr />
+
+        <div>
+          <div *ngFor="let message of messageService.messages">
+            {{ message }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="icon" (click)="toggleExpand()">
+      <fa-icon [icon]="faBell" id="message-ico"></fa-icon>
+    </div>
+
+    <div class="messages">
+      <h5 class="m-0">
+        <span class="badge rounded-pill shadow bg-danger">
+          {{ messageService.messages.length }}
+        </span>
+      </h5>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,10 @@
-# AngularStarter
+# Hello Angular
+
+This is a hello world Angular project based off of the offical Angular starter tutorial.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.7.
+
+---------------
 
 ## Development server
 

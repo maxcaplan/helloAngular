@@ -1,0 +1,74 @@
+<div class="row d-flex justify-content-center">
+  <div class="col col-lg-6">
+    <div class="card mb-3 shadow">
+      <div *ngIf="hero; else loading" class="card-body">
+        <div class="row">
+          <div class="col">
+            <h2 class="mb-0">{{ hero.name | uppercase }} Details</h2>
+          </div>
+          <div class="col-auto">
+            <h4 class="mb-0">
+              <span class="badge bg-primary float-right"
+                >id: {{ hero.id }}</span
+              >
+            </h4>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="input-group mb-3">
+          <span class="input-group-text">Hero name:</span>
+
+          <input
+            [(ngModel)]="hero.name"
+            class="form-control"
+            placeholder="name"
+          />
+        </div>
+
+        <div class="row g-3">
+          <div class="col">
+            <button (click)="goBack()" class="btn btn-block btn-secondary">
+              <fa-icon [icon]="faArrowLeft"></fa-icon> go back
+            </button>
+          </div>
+          <div class="col">
+            <button (click)="save()" class="btn btn-block btn-success">
+              save
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #loading>
+        <div class="card-body">
+          <div class="row mb-3 d-flex justify-content-center">
+            <div class="col-auto">
+              <div
+                class="spinner-border text-primary"
+                style="width: 3rem; height: 3rem;"
+                role="status"
+              >
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-3">
+            <div class="col">
+              <button (click)="goBack()" class="btn btn-block btn-secondary">
+                <fa-icon [icon]="faArrowLeft"></fa-icon> go back
+              </button>
+            </div>
+            <div class="col">
+              <button (click)="save()" class="btn btn-block btn-success">
+                save
+              </button>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

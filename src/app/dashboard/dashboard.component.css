@@ -1,0 +1,15 @@
+.card {
+  text-decoration: none;
+  border-color: var(--bs-teal) !important;
+  background: var(--bs-light);
+  color: var(--bs-teal);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  background: var(--bs-teal);
+  color: var(--bs-light);
+  transform: translateY(-0.5rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}

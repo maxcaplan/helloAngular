@@ -1,0 +1,74 @@
+<div id="search-component">
+  <h4>
+    <label for="search-box" class="w-100"
+      >Hero Search <fa-icon [icon]="faSearch" class="float-right"></fa-icon
+    ></label>
+  </h4>
+
+  <input
+    #searchBox
+    id="search-box"
+    class="form-control"
+    (input)="search(searchBox.value)"
+    placeholder="Superman ..."
+  />
+
+  <ul *ngIf="heroes$ | async; let heroes" class="list-group">
+    <!-- $ is a convention that indicates heroes$ is an Observable, not an array -->
+    <!--  (|) followed by async identifies Angular's AsyncPipe and subscribes to an Observable -->
+
+    <div class="row my-2">
+      <div
+        *ngIf="showAll || heroes.length < limit; else limitOfAll"
+        class="col"
+      >
+        <p class="m-0 h5">
+          <span class="badge bg-info">showing {{ heroes.length }} results</span>
+        </p>
+      </div>
+      <ng-template #limitOfAll>
+        <div class="col">
+          <p class="m-0 h5">
+            <span class="badge bg-info"
+              >showing {{ limit }} of {{ heroes.length }} results</span
+            >
+          </p>
+        </div>
+      </ng-template>
+
+      <div class="col-auto">
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="showAll"
+            [(ngModel)]="showAll"
+          />
+          <label class="form-check-label" for="showAll">
+            Show All
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="showAll; else showLimit">
+      <a
+        *ngFor="let hero of heroes; let i = index"
+        routerLink="/detail/{{ hero.id }}"
+        class="list-group-item list-group-item-action"
+      >
+        <b>{{ i + 1 }}.</b> {{ hero.name }}
+      </a>
+    </div>
+
+    <ng-template #showLimit>
+      <a
+        *ngFor="let hero of heroes?.slice(0, limit); let i = index"
+        routerLink="/detail/{{ hero.id }}"
+        class="list-group-item list-group-item-action"
+      >
+        <b>{{ i + 1 }}.</b> {{ hero.name }}
+      </a>
+    </ng-template>
+  </ul>
+</div>

@@ -1,0 +1,15 @@
+<h2 class="mb-3">Top Heroes:</h2>
+
+<div class="row row-cols-1 row-cols-md-3 g-3">
+  <div *ngFor="let hero of heroes" class="col">
+    <a routerLink="/detail/{{ hero.id }}" class="card border">
+      <div class="card-body d-flex justify-content-center align-items-center">
+        <h4>{{ hero.name }}</h4>
+      </div>
+    </a>
+  </div>
+</div>
+
+<hr />
+
+<app-hero-search></app-hero-search>
